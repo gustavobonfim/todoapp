@@ -1,1 +1,19 @@
 <h1>New Todo</h1>
+
+<%= form_for @todo, url: {action: "create"} do |f| %>
+
+  <div class="">
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: "Enter a todo's name" %>
+  </div>
+
+  <div class="">
+    <%= f.label :description %>
+    <%= f.text_area :description, size: "60x20", placeholder: "Enter a description" %>
+  </div>
+
+  <div class="">
+    <%= f.submit "Create Todo" %>
+  </div>
+
+<% end %>
