@@ -1,4 +1,4 @@
-<h1>New Todos</h1>
+<h1>Editing existing Todo</h1>
 
 <% if @todo.errors.any? %>
   <h4>The following errors prevente the todo to create</h4>
@@ -12,9 +12,7 @@
 
 <% end %>
 
-
-<%= form_for @todo, url: {action: "create"} do |f| %>
-
+<%= form_for @todo, url: {action: "update"} do |f| %>
   <div class="">
     <p>
       <%= f.label :name %><br>

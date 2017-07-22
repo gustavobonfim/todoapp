@@ -1,1 +1,13 @@
 <h1>Todo</h1>
+
+<p>
+  <%= @todo.name %>
+</p>
+
+<p>
+  <%= @todo.description %>
+</p>
+
+
+<%= link_to "New Todo", new_todo_path %>
+<%= link_to "Edit Todo", edit_todo_path(@todo) %>

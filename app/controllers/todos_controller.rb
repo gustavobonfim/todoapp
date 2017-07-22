@@ -9,15 +9,38 @@ class TodosController < ApplicationController
   end
 
   def show
-
+    @todo = Todo.find(params[:id])
   end
 
   def create
-    @todo = Todo.new(params[:id])
+    @todo = Todo.new todo_params
     if @todo.save
+      flash[:success] = "Todo successfully created!"
+      redirect_to todo_path(@todo)
     else
-      redirect_to new_todo_path
+      render 'new'
     end
+  end
+
+  def edit
+    @todo = Todo.find(params[:id])
+  end
+
+  def update
+    @todo = Todo.find(params[:id])
+    if @todo.update(todo_params)
+      flash[:success] = "Todo was successfully updated!"
+      redirect_to todo_path(@todo)
+    else
+      render 'edit'
+    end
+
+  end
+
+  private
+  def todo_params
+    params.require(:todo).permit(:name, :description)
+
 
   end
 end
