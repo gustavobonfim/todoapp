@@ -1,11 +1,12 @@
 class TodosController < ApplicationController
 
+
   def new
     @todo = Todo.new
   end
 
   def index
-
+    @todos = Todo.all
   end
 
   def show
@@ -34,6 +35,13 @@ class TodosController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @todo = Todo.find(params[:id])
+    @todo.destroy
+    flash[:danger] = "Todo was deleted successfully"
+    redirect_to todos_path
 
   end
 
